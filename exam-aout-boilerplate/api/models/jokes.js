@@ -1,9 +1,8 @@
-const { ObjectId } = require('mongodb')
+// const { ObjectId } = require('mongodb')
 const mongoose = require('mongoose')
 
 
 const jokeSchema = new mongoose.Schema({
-    id: ObjectId,
     question: String,
     answer: String,
     category: String
