@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     const body = req.body;
-    if (!body.username || !body.date || !body.score || !body.joke) {
+    if (!body.username || !body.score || !body.joke) {
         return res.status(400).json({ error: 'content missing' })
     }
 
