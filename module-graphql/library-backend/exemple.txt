@@ -1,0 +1,47 @@
+query Query{
+  allBooks {
+    title 
+    author
+    published 
+    genres
+  }
+}
+
+query Query2{
+  allAuthors {
+    name
+    bookCount
+  }
+}
+
+query Query3{
+  allBooks(author: "Robert Martin") {
+    title
+  }
+}
+
+query Query4{
+  allBooks(genre: "refactoring") {
+    title
+    author
+  }
+}
+
+query Query5{
+  allBooks(author: "Robert Martin", genre: "refactoring") {
+    title
+    author
+  }
+}
+
+mutation Mutation{
+  addBook(
+    title: "NoSQL Distilled",
+    author: "Martin Fowler",
+    published: 2012,
+    genres: ["database", "nosql"]
+  ) {
+    title,
+    author
+  }
+}
