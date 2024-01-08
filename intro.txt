@@ -1,0 +1,14 @@
+Backend :
+
+1) npm i
+2) models shemas
+3) routes (+ index.js)
+4) rest client (extension)
+
+Frontend :
+
+1) npm i
+2) service API
+3) Context 
+4) Components (eslint extension)
+5) Router (route, link, etc.)
