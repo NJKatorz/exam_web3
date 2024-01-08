@@ -23,25 +23,31 @@ router.post('/', (req, res) => {
         return res.status(400).json({ error: 'score not correct' })
     }
 
-
-    Joke.findById(body.joke).then(joke => {
-        if (joke) {
-            const score = new Score({
-                username: body.username,
-                date: body.date,
-                score: body.score,
-                joke: body.joke
-            });
-
-            score.save().then(savedScore => {
-                res.json(savedScore)
-            });
-        } else {
-            res.status(400).json({ error: 'joke not found' })
-        }
-    });
-
-
+    Score.find({ username: body.username, joke: body.joke })
+        .then((scoreFound) => {
+            if (scoreFound.length > 0) {
+                res.status(400).json({ error: 'username and joke already exist' });
+            }
+            else{
+                Joke.findById(body.joke).then(joke => {
+                    if (joke) {
+                        const score = new Score({
+                            username: body.username,
+                            date: body.date,
+                            score: body.score,
+                            joke: body.joke
+                        });
+    
+                        score.save().then(savedScore => {
+                            res.json(savedScore)
+                        });
+                    } else {
+                        res.status(400).json({ error: 'joke not found' })
+                    }
+                });
+            }
+        
+        })
 });
 
 module.exports = router
